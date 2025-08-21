@@ -93,6 +93,10 @@ app.use("/", userRouter);
 //   res.send("successfull");
 // });
 
+app.get("/", (req, res) => {
+  res.render("home");
+});
+
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
 });

@@ -1,0 +1,161 @@
+body {
+    background: linear-gradient(120deg, #f8f9fa 0%, #e0eafc 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+/* Home page styles */
+.home-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    border-radius: 18px;
+    margin: 40px auto;
+    max-width: 700px;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.12);
+    padding: 48px 24px;
+    animation: fadeIn 1s;
+    box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+.home-hero h1 {
+    font-size: 2.8rem;
+    color: #2c3e50;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(44,62,80,0.08);
+}
+
+.home-hero p {
+    font-size: 1.3rem;
+    color: #34495e;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta-btn {
+    background: linear-gradient(120deg, #2980b9 0%, #1abc9c 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(44,62,80,0.12);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    outline: none;
+}
+
+.cta-btn:hover, .cta-btn:focus {
+    background: linear-gradient(120deg, #1abc9c 0%, #2980b9 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 32px rgba(44,62,80,0.18);
+}
+
+.hero-sub {
+    font-size: 1.4rem;
+    color: #34495e;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 600px;
+}
+
+.welcome-emoji {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    animation: bounce 1.5s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0);}
+    to { transform: translateY(-12px);}
+}
+
+.home-nav {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home-nav a, .home-nav span {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+    padding: 10px 22px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.06);
+    margin-bottom: 6px;
+    cursor: pointer;
+    border: 1px solid #c2e9fb;
+}
+
+.home-nav a:hover {
+    color: #fff;
+    background: linear-gradient(120deg, #2980b9 0%, #1abc9c 100%);
+    box-shadow: 0 4px 16px rgba(44,62,80,0.12);
+    border: 1px solid #1abc9c;
+}
+
+.home-nav span {
+    background: transparent;
+    box-shadow: none;
+    color: #2c3e50;
+    cursor: default;
+    border: none;
+    padding: 10px 0;
+}
+
+.flash-success, .flash-error {
+    margin: 12px 0;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 1rem;
+    max-width: 400px;
+    animation: fadeIn 0.7s;
+}
+
+.flash-success { background: #e8f5e9; color: #388e3c; border: 1px solid #c8e6c9; }
+.flash-error { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .home-hero {
+        max-width: 95vw;
+        padding: 24px 8px;
+    }
+    .home-hero h1 {
+        font-size: 2rem;
+    }
+    .home-nav a, .home-nav span {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+}
