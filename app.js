@@ -18,17 +18,21 @@ const userRouter = require("./routes/user.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
-main()
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  try {
+    await mongoose.connect(MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 10000, // 10 seconds timeout
+    });
+    console.log("Connected to MongoDB successfully!");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    process.exit(1); // Exit if unable to connect
+  }
 }
+
+main();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -47,8 +51,6 @@ const sessionOption = {
     httpOnly: true,
   },
 };
-
-
 
 app.use(session(sessionOption));
 app.use(flash());
@@ -97,14 +99,22 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
+app.get('/your-endpoint', async (req, res) => {
+  try {
+    // ...existing code...
+  } catch (error) {
+    console.error(error); // Log the error
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something Went Wrong!" } = err;
-  // res.status(statusCode).send(message);
-  res.status(statusCode).render("error.ejs", { message });
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(5000, () => {

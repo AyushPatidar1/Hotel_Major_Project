@@ -4,6 +4,28 @@
     <button>Create New Lisitng</button>
   </form> -->
 
+<form action="/listings" method="GET" class="mb-4">
+  <div class="input-group">
+    <input
+      type="text"
+      name="query"
+      value="<%= typeof query !== 'undefined' ? query : '' %>"
+      class="form-control"
+      placeholder="Search..."
+    />
+    <select name="filter" class="form-select">
+      <option value="title" <%= filter === 'title' ? 'selected' : '' %>>Title</option>
+      <option value="location" <%= filter === 'location' ? 'selected' : '' %>>Location</option>
+      <option value="price" <%= filter === 'price' ? 'selected' : '' %>>Price (≤)</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+
+<% if (allListings.length === 0) { %>
+  <div class="alert alert-warning">No listings found for your search.</div>
+<% } %>
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for(let listing of allListings) { %>
   <a href="/listings/<%= listing.id %>" class="listing-link">
